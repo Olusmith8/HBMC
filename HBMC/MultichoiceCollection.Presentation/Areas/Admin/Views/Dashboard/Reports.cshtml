@@ -1,0 +1,84 @@
+﻿@model MultichoiceCollection.Presentation.Areas.Admin.Models.ReportViewModel
+@{
+    ViewBag.Title = "Reports";
+}
+<section class="row small-spacing">
+    <div class="box-content">
+        <h4 class="box-title">REPORTS</h4>
+        
+        <div class="row">
+            <form method="get">
+                <div class="col-md-4">
+                    <input class="form-control" name="startDate" type="date" placeholder="Start Date" value="@Model.StartDate" />
+                </div>
+                <div class="col-md-4">
+                    <input class="form-control" name="endDate" type="date" placeholder="End Date" value="@Model.EndDate" />
+                </div>
+
+
+
+                <div class="col-md-2">
+                    <input type="submit" value="GO" class="btn btn-primary" />
+                </div>
+                <div class="col-md-2 text-center">
+                    <a href="download?startDate=@Model.StartDate&endDate=@Model.EndDate" class="btn btn-primary btn-sm">DOWNLOAD</a>
+                </div>
+            </form>
+        </div>
+
+        <!-- /.dropdown js__dropdown -->
+        <section class="table-responsive">
+            <table class="table table-striped margin-bottom-10">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Agent Till</th>
+                    <th>Amount</th>
+                    <th>Fees</th>
+                    <th>Customer Number</th>
+                    <th>Phone</th>
+                    <th>Trans Date</th>
+                    <th>Audit Ref No</th>
+                    <th>Device No</th>
+                    <th>Business Type</th>
+                    <th>Creation Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                @{ var sn = 0;}
+                @foreach (var item in Model.Transactions)
+                {
+                    <tr>
+                        <td>@(++sn)</td>
+                        <td>@item.accountNumber</td>
+                        <td>@item.amount</td>
+                        <td>@item.transFees</td>
+                        <td>@item.customerNumber</td>
+                        <td>@item.mobileNumber</td>
+                        <td>@item.transactionDate</td>
+                        <td>@item.auditReferenceNo</td>
+                        <td>@item.deviceNumber</td>
+                        <td>@item.businessType</td>
+                        <td>@item.CreatedDate</td>
+                    </tr>
+                }
+
+                </tbody>
+            </table>
+            
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    @if (Model.Page > 1)
+                    {
+                    <a href="?startDate=@Model.StartDate&endDate=@Model.EndDate&page=@(Model.Page-1)" class="btn btn-primary btn-sm">PREVIOUS</a>
+                    }
+                    @if (Model.Page < Model.PageCount)
+                    {
+                    <a href="?startDate=@Model.StartDate&endDate=@Model.EndDate&page=@(Model.Page+1)" class="btn btn-primary btn-sm">NEXT</a>
+                    }
+                </div>
+            </div>
+        </section>
+        <!-- /.table -->
+    </div>
+</section>

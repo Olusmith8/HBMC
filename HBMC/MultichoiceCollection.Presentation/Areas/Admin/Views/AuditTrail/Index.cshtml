@@ -1,0 +1,55 @@
+﻿@model MultichoiceCollection.Presentation.Areas.Admin.Models.AuditTrailListViewModel
+@{
+    ViewBag.Title = "AUDIT TRAIL";
+}
+<section class="row small-spacing">
+    <div class="box-content">
+        <h4 class="box-title">@ViewBag.Title</h4>
+
+        <div class="row">
+            <form method="get">
+                <div class="col-md-5">
+                    <input class="form-control" name="startDate" type="date" placeholder="Start Date" value="@Model.StartDate" />
+                </div>
+                <div class="col-md-5">
+                    <input class="form-control" name="endDate" type="date" placeholder="End Date" value="@Model.EndDate" />
+                </div>
+
+
+                <div class="col-md-2">
+                    <input type="submit" value="GO" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+        <section class="table-responsive">
+            <table class="table table-striped margin-bottom-10">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Title</th>
+                        <th>Date</th>
+                        <th>Detail</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ var sn = 0;}
+                    @foreach (var item in Model.AuditTrails)
+                    {
+                        <tr>
+                            <td>@(sn++)</td>
+                            <td>@item.Title</td>
+                            <td>@item.Date</td>
+                            <td>@item.Detail</td>
+                            <td>@{
+                                    if (!string.IsNullOrEmpty(item.RefUrl)) { <a href="@item.RefUrl">View Object</a>}
+                                }</td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </section>
+        <!-- /.table -->
+    </div>
+</section>

@@ -1,0 +1,13 @@
+packages
+MultichoiceCollection.Common.Entities/bin
+MultichoiceCollection.Common.Entities/obj
+MultichoiceCollection.Common.Shared/bin
+MultichoiceCollection.Common.Shared/obj
+MultichoiceCollection.Models.Repositories/bin
+MultichoiceCollection.Models.Repositories/obj
+MultichoiceCollection.Presentation/bin
+MultichoiceCollection.Presentation/obj
+MultichoiceCollection.Services/bin
+MultichoiceCollection.Services/obj
+MultichoiceCollection.Test/bin
+MultichoiceCollection.Test/obj
